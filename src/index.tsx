@@ -15,7 +15,7 @@ import {
 
 function createFormContext<TFieldValues extends FieldValues>(
   initialState: TFieldValues,
-  mode: "onChange" | "onSubmit" | "onBlur" | undefined
+  mode?: "onChange" | "onSubmit" | "onBlur"
 ) {
   const Context = createContext<UseFormReturn<TFieldValues, object>>(
     undefined as any

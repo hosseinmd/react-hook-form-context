@@ -1,6 +1,6 @@
 {
   "name": "react-hook-form-context",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "React Hook Form Context",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

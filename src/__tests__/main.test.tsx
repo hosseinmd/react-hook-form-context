@@ -4,8 +4,12 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 test("create context", () => {
-  const FormContext = createFormContext({
+  const FormContext = createFormContext<{
+    param: string;
+    filters: object[];
+  }>({
     param: "",
+    filters: [],
   });
 
   const Status = () => {
@@ -17,7 +21,9 @@ test("create context", () => {
     return (
       <FormContext.Controller
         name="param"
-        render={({ field }) => <input {...field} aria-label="input" />}
+        render={({ field }) => {
+          return <input {...field} aria-label="input" />;
+        }}
       />
     );
   };

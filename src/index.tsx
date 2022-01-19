@@ -11,6 +11,7 @@ import {
   useWatch,
   Controller,
   ControllerProps,
+  FieldPath,
 } from "react-hook-form";
 
 function createFormContext<TFieldValues extends FieldValues>(
@@ -77,10 +78,12 @@ function createFormContext<TFieldValues extends FieldValues>(
       const state = useFieldArray({ control, name, keyName, shouldUnregister });
       return state;
     },
-    Controller: ({
+    Controller: <
+      TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+    >({
       name,
       ...rest
-    }: Omit<ControllerProps<TFieldValues>, "control">) => {
+    }: Omit<ControllerProps<TFieldValues, TName>, "control">) => {
       const { control } = useContext(Context);
       return <Controller {...rest} control={control} name={name} />;
     },

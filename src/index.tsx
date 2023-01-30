@@ -12,11 +12,11 @@ import {
   Controller,
   ControllerProps,
   FieldPath,
+  UseFormProps,
 } from "react-hook-form";
 
 function createFormContext<TFieldValues extends FieldValues>(
-  initialState: TFieldValues,
-  mode?: "onChange" | "onSubmit" | "onBlur"
+  initialState: TFieldValues
 ) {
   const Context = createContext<UseFormReturn<TFieldValues, object>>(
     undefined as any
@@ -26,13 +26,12 @@ function createFormContext<TFieldValues extends FieldValues>(
     Provider: ({
       children,
       defaultValues,
+      ...formProps
     }: {
       children: ReactNode;
-      defaultValues?: Partial<TFieldValues>;
-    }) => {
+    } & UseFormProps<TFieldValues>) => {
       const methods = useForm<TFieldValues>({
-        mode: mode,
-        reValidateMode: mode,
+        ...formProps,
         defaultValues: { ...initialState, ...defaultValues } as any,
       });
 

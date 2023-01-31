@@ -1,5 +1,5 @@
 # React-hook-form-context
-This is a wrapper of react-hook-form with some additional Benefits.
+This is a wrapper on react-hook-form with some additional Benefits.
 - Use multiple form in your component without need to managing context of them.
 - Be type safe when use all of react-hook-form utils.
 
